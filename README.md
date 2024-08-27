@@ -6,3 +6,5 @@ Este proyecto fue creado para el Challenge Encriptador de texto simple el cual f
 HTML: Estructura del contenido.
 CSS: Estilos y diseño de la interfaz de usuario.
 JavaScript: Lógica de encriptación y desencriptación, así como interactividad.
+
+(imagenes/carnalito.png)
