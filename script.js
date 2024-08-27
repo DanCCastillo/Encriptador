@@ -15,6 +15,7 @@ function btnDesencriptar() {
     mensaje.value = textoDesencriptado;
     textArea.value = "";
     mensaje.style.backgroundImage = "none";
+    tarjetaContenedor.style.display = "none";
 }
 
 function encriptar(stringEncriptada) {
