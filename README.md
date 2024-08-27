@@ -7,4 +7,4 @@ HTML: Estructura del contenido.
 CSS: Estilos y diseño de la interfaz de usuario.
 JavaScript: Lógica de encriptación y desencriptación, así como interactividad.
 
-(imagenes/carnalito.png)
+![<3](imagenes/carnalito.png).
