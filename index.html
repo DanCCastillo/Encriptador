@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encriptador de Texto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="logo">
+            <img src="./imagenes/Logo.png" alt="Logo" />
+        </nav>
+    </header>
+
+    <main>
+        <section class="encriptador">
+            <textarea class="textoEntrada"  placeholder="ingrese el texto aqui"></textarea>
+            <div class="alerta">
+                <p class="tx-aviso">Solo letras minúsculas y sin acentos </p>
+            </div>
+            <div class="botones">
+                <button class="boton1" onclick="btnEncriptar()">Encriptar</button>
+                <button class="boton2" onclick="btnDesencriptar()">Desencriptar</button>
+            </div>
+        </section>
+        <section class="tarjeta">
+            <div class="tarjeta-contenedor">
+                <img src="./imagenes/descarga (1).png" class="img-kill">
+                
+                <p class="tx1">No has escrito ningun mensaje</p>
+                <p class="tx2">Ingresa el texto que deseas Encriptar o Desencriptar</p>
+            </div>
+            <textarea class="tarjetaSalida"  readonly></textarea>
+
+            <button class="copiar" onclick="copiarTexto()" >copiar</button>
+    
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <footer class="footer">
+    </footer>
+</body>
+
+</html>
