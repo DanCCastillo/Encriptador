@@ -118,6 +118,26 @@ main {
     display: none;
     /* Agrega otros estilos según el diseño de tu aplicación */
 }
+#loginBtn {
+    display: block; /* Asegúrate de que no esté oculto */
+    width: 20.5rem;
+    height: 4.25rem;
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--color-boton);
+    background: var(--color-secundario);
+    border-radius: 1.5rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem; /* Ajusta según la posición deseada */
+    transition: background 0.3s ease;
+}
+
+#loginBtn:hover {
+    background: var(--color-hover);
+}
+
 
 
 .boton1, .boton2 {
