@@ -114,6 +114,12 @@ main {
     background-color: transparent;
 }
 
+#postBtn {
+    display: none;
+    /* Agrega otros estilos según el diseño de tu aplicación */
+}
+
+
 .boton1, .boton2 {
     width: 20.5rem;
     height: 4.25rem;

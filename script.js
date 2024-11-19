@@ -72,26 +72,72 @@ function copiarTexto() {
         });
 }
 
-window.fbAsyncInit = function () {
+// Inicializar el SDK de Facebook
+window.fbAsyncInit = function() {
     FB.init({
-        appId: "1714882042687651", // Reemplaza con tu App ID
-        cookie: true,
-        xfbml: true,
-        version: "v17.0",
+      appId: '1714882042687651', // Reemplaza con tu App ID de Facebook Developers
+      cookie: true, 
+      xfbml: true, 
+      version: 'v17.0'
     });
-    console.log("SDK de Facebook cargado.");
-};
+    console.log('SDK de Facebook cargado correctamente.');
+  };
+  
+  // Cargar el SDK de forma asíncrona
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  
 
-document.getElementById("loginBtn").addEventListener("click", function () {
-    FB.login(
-        function (response) {
-            if (response.authResponse) {
-                console.log("Inicio de sesión exitoso:", response);
-                // Aquí puedes habilitar opciones como publicar
-            } else {
-                console.log("El usuario canceló el inicio de sesión.");
-            }
-        },
-        { scope: "pages_manage_posts,publish_to_groups" }
+// Botón de inicio de sesión con Facebook
+document.getElementById('loginBtn').addEventListener('click', function() {
+    FB.login(function(response) {
+      if (response.authResponse) {
+        console.log('Inicio de sesión exitoso:', response);
+        alert('¡Inicio de sesión exitoso! Ahora puedes publicar en Facebook.');
+      } else {
+        console.log('El usuario canceló el inicio de sesión.');
+        alert('Inicio de sesión cancelado.');
+      }
+    }, { scope: 'pages_manage_posts,publish_to_groups' }); // Permisos requeridos
+  });
+  
+  // Botón para publicar en Facebook
+document.getElementById('postBtn').addEventListener('click', function() {
+    // Obtenemos el contenido de la tarjeta de salida
+    const message = document.querySelector('.tarjetaSalida').value;
+  
+    if (!message.trim()) {
+      alert('No hay mensaje para publicar. Ingresa texto en el encriptador primero.');
+      return;
+    }
+  
+    // Publicar en Facebook
+    FB.api(
+      '/me/feed', // Usa "me" para publicar en el perfil del usuario
+      'POST',
+      { message: message }, // Mensaje a publicar
+      function(response) {
+        if (!response || response.error) {
+          console.error('Error al publicar:', response.error);
+          alert('Ocurrió un error al publicar en Facebook.');
+        } else {
+          alert('¡Publicación exitosa! ID de la publicación: ' + response.id);
+        }
+      }
     );
-});
+  });
+  
+  // Mostrar el botón de publicar después del inicio de sesión
+  document.getElementById('loginBtn').addEventListener('click', function() {
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        document.getElementById('postBtn').style.display = 'block';
+      }
+    });
+  });
+  
