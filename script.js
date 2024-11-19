@@ -15,25 +15,44 @@ function btnDesencriptar() {
     mensaje.value = textoDesencriptado;
     textArea.value = "";
     mensaje.style.backgroundImage = "none";
+    tarjetaContenedor.style.display = "none";
 }
 
 function encriptar(stringEncriptada) {
-    let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
+    let matrizCodigo = [
+        ["e", "enter"],
+        ["i", "imes"],
+        ["a", "ai"],
+        ["o", "ober"],
+        ["u", "ufat"],
+    ];
     stringEncriptada = stringEncriptada.toLowerCase();
 
     for (let i = 0; i < matrizCodigo.length; i++) {
-        stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
+        stringEncriptada = stringEncriptada.replaceAll(
+            matrizCodigo[i][0],
+            matrizCodigo[i][1]
+        );
     }
 
     return stringEncriptada;
 }
 
 function desencriptar(stringDesencriptada) {
-    let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
+    let matrizCodigo = [
+        ["e", "enter"],
+        ["i", "imes"],
+        ["a", "ai"],
+        ["o", "ober"],
+        ["u", "ufat"],
+    ];
     stringDesencriptada = stringDesencriptada.toLowerCase();
 
     for (let i = 0; i < matrizCodigo.length; i++) {
-        stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]);
+        stringDesencriptada = stringDesencriptada.replaceAll(
+            matrizCodigo[i][1],
+            matrizCodigo[i][0]
+        );
     }
 
     return stringDesencriptada;
@@ -41,13 +60,38 @@ function desencriptar(stringDesencriptada) {
 
 function copiarTexto() {
     mensaje.select();
-    mensaje.setSelectionRange(0, 99999); 
+    mensaje.setSelectionRange(0, 99999);
 
-    navigator.clipboard.writeText(mensaje.value)
+    navigator.clipboard
+        .writeText(mensaje.value)
         .then(() => {
             alert("Texto copiado al portapapeles");
         })
-        .catch(err => {
+        .catch((err) => {
             console.error("Error al copiar el texto: ", err);
         });
 }
+
+window.fbAsyncInit = function () {
+    FB.init({
+        appId: "1714882042687651", // Reemplaza con tu App ID
+        cookie: true,
+        xfbml: true,
+        version: "v17.0",
+    });
+    console.log("SDK de Facebook cargado.");
+};
+
+document.getElementById("loginBtn").addEventListener("click", function () {
+    FB.login(
+        function (response) {
+            if (response.authResponse) {
+                console.log("Inicio de sesión exitoso:", response);
+                // Aquí puedes habilitar opciones como publicar
+            } else {
+                console.log("El usuario canceló el inicio de sesión.");
+            }
+        },
+        { scope: "pages_manage_posts,publish_to_groups" }
+    );
+});
